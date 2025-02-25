@@ -21,10 +21,10 @@ export class Flight {
   @Column()
   arrivalAirport: string;
 
-  @Column({ type: 'datetime' })
+  @Column({ type: 'timestamp' })
   departureTime: Date;
 
-  @Column({ type: 'datetime' })
+  @Column({ type: 'timestamp' })
   arrivalTime: Date;
 
   @Column({ nullable: true })

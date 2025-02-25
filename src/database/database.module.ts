@@ -1,12 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Activity } from 'src/entity/activities.entity';
-import { Country } from 'src/entity/country.entity';
-import { Destination } from 'src/entity/destinations.entity';
-import { Flight } from 'src/entity/flights.entity';
-import { Trip } from 'src/entity/trips.entity';
-import { User } from 'src/entity/users.entity';
 
 @Module({
   imports: [
@@ -28,10 +22,10 @@ import { User } from 'src/entity/users.entity';
         //   rejectUnauthorized: true,
         // },
         autoLoadEntities: true,
-        entities: [Country, User, Trip, Destination, Activity, Flight],
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Auto-create tables (disable in production)
         migrations: ['migrations/*{.ts,.js}'],
-      }),
+      })
     }),
   ],
 })
