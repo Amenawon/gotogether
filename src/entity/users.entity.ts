@@ -8,6 +8,7 @@ import {
     UpdateDateColumn 
   } from 'typeorm';
 import { IsEmail, IsNotEmpty } from 'class-validator';
+import { Exclude } from 'class-transformer';
 import { Itinerary } from './itineraries.entity';
   
   @Entity()
@@ -19,9 +20,9 @@ import { Itinerary } from './itineraries.entity';
     @IsEmail()
     email: string;
   
-    // @Column()
-    // @Exclude() // Exclude password from serialization
-    // password: string;
+    @Column()
+    @Exclude() // Exclude password from serialization
+    password: string;
   
     @Column()
     @IsNotEmpty()

@@ -70,4 +70,6 @@ export class ItineraryService {
     const response = await firstValueFrom(this.httpService.get(url));
     return response.data.results;
   }
+
+  
 }
