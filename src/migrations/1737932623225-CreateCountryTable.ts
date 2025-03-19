@@ -10,16 +10,7 @@ export class CreateCountryTable1737932623225 implements MigrationInterface {
             name VARCHAR(255) NOT NULL,
             code VARCHAR(10) NOT NULL
         );
-      `);
-        await queryRunner.query(`
-            INSERT INTO "country" ("name", "code")
-            VALUES
-              ('United States', 'US'),
-              ('Canada', 'CA'),
-              ('United Kingdom', 'GB'),
-              ('Germany', 'DE'),
-              ('Australia', 'AU');
-          `);
+      `); 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

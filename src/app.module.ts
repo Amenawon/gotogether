@@ -8,6 +8,7 @@ import { VisaRequirementsModule } from './visa-requirements/visa-requirements.mo
 import { UsersModule } from './users/users.module';
 import { ItineraryModule } from './itineraries/itineraries.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 import typeorm from './config/typeorm';  
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import typeorm from './config/typeorm';
     VisaRequirementsModule,
     ItineraryModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

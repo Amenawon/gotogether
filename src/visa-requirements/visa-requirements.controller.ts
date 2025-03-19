@@ -11,15 +11,7 @@ export class VisaRequirementsController {
   ) {}
 
   @Post('get-visa-requirements')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        passport: { type: 'string', example: 'US' },
-        destination: { type: 'string', example: 'India' },
-      },
-    },
-  })
+  
   getVisaRequirements(@Body() visaRequirementsRequest: VisaRequirementsRequest,) {
     return this.visaRequirementsService.getVisaRequirements(
       visaRequirementsRequest,
