@@ -10,6 +10,7 @@ import { ItineraryModule } from './itineraries/itineraries.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import typeorm from './config/typeorm';  
+import { CurrencyConversionModule } from './currency-conversion/currency-conversion.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -27,6 +28,7 @@ import typeorm from './config/typeorm';
     ItineraryModule,
     UsersModule,
     AuthModule,
+    CurrencyConversionModule
   ],
   controllers: [AppController],
   providers: [AppService],
