@@ -8,7 +8,7 @@ export class CountryController {
 
     constructor(private readonly countryService: CountryService) {}
 
-    @Get('get-all-countries')
+    @Get('get-countries')
     async getAllCountries() {
     return this.countryService.getCountries();
     }

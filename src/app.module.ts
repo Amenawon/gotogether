@@ -10,7 +10,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import typeorm from './config/typeorm';  
 import { CurrencyConversionModule } from './currency-conversion/currency-conversion.module';
-import { SharedModule } from './shared/shared.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({

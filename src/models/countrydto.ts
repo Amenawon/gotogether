@@ -1,7 +1,5 @@
 export interface CountryResponse {
-  id: number
-  name: string
-  iso2: string
-  native?: string
-  emoji: string
+  id: number,
+  name: string,
+  code: string,
 }
