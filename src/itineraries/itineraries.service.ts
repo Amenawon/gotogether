@@ -7,6 +7,12 @@ import { TemplateService } from '../template/template.service';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
+import { GenerateItineraryDto } from './generate-itinerary-dto';
+import { OpenAI } from 'openai';
+
+const INSTRUCTIONS='You are an expert travel planner, helping people build their travel itineraries with activities suggestions, where they can go, and  best places tailored to them';
+const MODEL='gpt-4';
+const TEMPERATURE=0.7;
 
 @Injectable()
 export class ItineraryService {
@@ -16,48 +22,36 @@ export class ItineraryService {
     private readonly templateService: TemplateService,
     private readonly configService: ConfigService,
     private readonly httpService: HttpService,
+    private readonly openai: OpenAI,
   ) {}
 
-  async generateItinerary(
-    city: string,
-    tripType: string,
-    duration: number,
-    // userId: number,
-  ): Promise<Itinerary> {
-    // Fetch templates from DB or environment
-    const titleTemplate =
-      (await this.templateService.findByName('itinerary_title')) ||
-      this.configService.get('ITINERARY_TITLE_TEMPLATE');
+  async generateItinerary(request: GenerateItineraryDto): Promise<string> {
+    const { destination, interests, days } = request;
 
-    const descriptionTemplate =
-      (await this.templateService.findByName('itinerary_description')) ||
-      this.configService.get('ITINERARY_DESCRIPTION_TEMPLATE');
+    const prompt = `Generate a ${days}-day travel itinerary for ${destination}. 
+    The user's interests include: ${interests.join(', ')}. 
+    Suggest interesting activities, places to visit, and food recommendations.`;
 
-    // Replace placeholders
-    const title = this.replacePlaceholders(titleTemplate, { tripType, city });
-    const description = this.replacePlaceholders(descriptionTemplate, {
-      tripType,
-      city,
-      duration,
+    const response = await this.openai.chat.completions.create({
+      model: MODEL,
+      messages: [
+        {
+          role: 'system',
+          content:INSTRUCTIONS
+        },
+        { role: 'user', content: prompt },
+      ],
+       temperature: TEMPERATURE,
     });
 
-    // Fetch activities from Google Places API
-    const activities = await this.fetchActivities(city, tripType);
-
-    // Save itinerary
-    const itinerary = this.itineraryRepo.create({
-      title,
-      description,
-      startDate: new Date(),
-      endDate: new Date(Date.now() + duration * 24 * 60 * 60 * 1000),
-      activities,
-      // user: { id: userId },
-    });
-
-    return this.itineraryRepo.save(itinerary);
+    console.log(response);
+    return response.choices[0]?.message?.content || 'No itinerary generated.'
   }
 
-  private replacePlaceholders(template: string, values: Record<string, any>): string {
+  private replacePlaceholders(
+    template: string,
+    values: Record<string, any>,
+  ): string {
     return Object.keys(values).reduce(
       (result, key) => result.replace(new RegExp(`{${key}}`, 'g'), values[key]),
       template,
@@ -70,6 +64,4 @@ export class ItineraryService {
     const response = await firstValueFrom(this.httpService.get(url));
     return response.data.results;
   }
-
-  
 }

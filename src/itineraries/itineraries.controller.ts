@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ItineraryService } from './itineraries.service';
-import { GenerateItineraryDto } from 'src/models/generateitinerary';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { GenerateItineraryDto } from './generate-itinerary-dto';
 
 
 @Controller('itineraries')
@@ -14,15 +14,15 @@ export class ItinerariesController {
     schema: {
       type: 'object',
       properties: {
-        city: { type: 'string', example: 'London' },
-        tripType: { type: 'string', example: 'Adventure' },
-        duration: { type: 'integer', example: 5 },
+        days: { type: 'string', example: '5' },
+        destination: { type: 'string', example: 'London' },
+        interests: { type: 'array', example: ['museums', 'parks', 'food']},
       },
     },
   })  async generate(@Body() body: GenerateItineraryDto): Promise<any> {
-    if (!body.city || !body.tripType || !body.duration) {
-      throw new BadRequestException('Missing required fields: city, tripType, or duration');
+    if (!body.days || !body.destination || !body.interests) {
+      throw new BadRequestException('Missing required fields: days, destination, or interests');
     }
-    return this.itineraryService.generateItinerary(body.city, body.tripType, body.duration);
+    return this.itineraryService.generateItinerary(body);
   }
 }
