@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
@@ -11,6 +10,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import typeorm from './config/typeorm';  
 import { CurrencyConversionModule } from './currency-conversion/currency-conversion.module';
+import { SharedModule } from './shared/shared.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,15 +22,14 @@ import { CurrencyConversionModule } from './currency-conversion/currency-convers
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
-    DatabaseModule,
+    DatabaseModule, 
     CountryModule,
     VisaRequirementsModule,
     ItineraryModule,
     UsersModule,
     AuthModule,
     CurrencyConversionModule
-  ],
-  controllers: [AppController],
+  ], 
   providers: [AppService],
 })
 export class AppModule {}
