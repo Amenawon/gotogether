@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: "country" }) 
 export class Country {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn() 
   id: number;
 
   @Column({ type: "varchar", length: 100, nullable: true })
