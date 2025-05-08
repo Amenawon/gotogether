@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { VisaRequirementsService } from './visa-requirements.service';
-import { VisaRequirementsRequest } from 'src/models/visa-requirements';
+import { VisaRequirementsRequest } from '../models/visa-requirements';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 
 @Controller('')

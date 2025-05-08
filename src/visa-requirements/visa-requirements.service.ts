@@ -4,7 +4,7 @@ import { AxiosResponse } from 'axios';
 import { env } from 'process';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { VisaRequirements, VisaRequirementsRequest } from 'src/models/visa-requirements';
+import { VisaRequirements, VisaRequirementsRequest } from '../models/visa-requirements';
 
 @Injectable()
 export class VisaRequirementsService {
