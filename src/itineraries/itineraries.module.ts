@@ -3,8 +3,8 @@ import { Module } from '@nestjs/common';
 import { ItinerariesController } from './itineraries.controller';
 import { ItineraryService } from './itineraries.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Itinerary } from 'src/entity/itineraries.entity';
-import { TemplateModule } from 'src/template/template.module';
+import { Itinerary } from '../entity/itineraries.entity';
+import { TemplateModule } from '../template/template.module';
 import { HttpModule } from '@nestjs/axios'; // Import HttpModule
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
