@@ -11,8 +11,9 @@ export class VisaRequirementsController {
   ) {}
 
   @Post('get-visa-requirements')
-  
-  getVisaRequirements(@Body() visaRequirementsRequest: VisaRequirementsRequest,) {
+  getVisaRequirements(
+    @Body() visaRequirementsRequest: VisaRequirementsRequest,
+  ) {
     return this.visaRequirementsService.getVisaRequirements(
       visaRequirementsRequest,
     );

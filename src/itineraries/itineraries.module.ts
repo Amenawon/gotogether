@@ -20,9 +20,9 @@ import OpenAI from 'openai';
         const openAIKey = configService.get('OPENAI_API_KEY');
         return new OpenAI(openAIKey);
       },
-      inject : [ConfigService]
+      inject: [ConfigService],
     },
   ],
-  exports: [ItineraryService]
+  exports: [ItineraryService],
 })
 export class ItineraryModule {}

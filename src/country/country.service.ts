@@ -12,7 +12,7 @@ import { CountryResponse } from 'src/models/countrydto';
 export class CountryService {
   constructor(
     @InjectRepository(Country)
-    private readonly countryRepository: Repository<Country>
+    private readonly countryRepository: Repository<Country>,
   ) {}
 
   async getCountries(): Promise<CountryResponse[]> {
