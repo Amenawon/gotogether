@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Trip } from './trips.entity';
 import { Destination } from './destinations.entity';
 
@@ -25,7 +32,17 @@ export class Activity {
   @Column({ type: 'timestamp' })
   endTime: Date;
 
-  @Column({ type: 'enum', enum: ['Sightseeing', 'Food', 'Adventure', 'Relaxation', 'Shopping', 'Cultural'] })
+  @Column({
+    type: 'enum',
+    enum: [
+      'Sightseeing',
+      'Food',
+      'Adventure',
+      'Relaxation',
+      'Shopping',
+      'Cultural',
+    ],
+  })
   category: string;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })

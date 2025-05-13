@@ -4,8 +4,8 @@ import { CurrencyConversionController } from './currency-conversion.controller';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
-    imports: [HttpModule],
-    providers: [CurrencyConversionService],
-    controllers: [CurrencyConversionController],
+  imports: [HttpModule],
+  providers: [CurrencyConversionService],
+  controllers: [CurrencyConversionController],
 })
 export class CurrencyConversionModule {}

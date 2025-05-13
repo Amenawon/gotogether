@@ -25,7 +25,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Auto-create tables (disable in production)
         migrations: ['migrations/*{.ts,.js}'],
-      })
+      }),
     }),
   ],
 })

@@ -5,14 +5,16 @@ import { CurrencyConversionService } from './currency-conversion.service';
 @ApiTags('currency-conversion')
 @Controller('currency-conversion')
 export class CurrencyConversionController {
-    constructor(private readonly currencyConversionService: CurrencyConversionService) {}
+  constructor(
+    private readonly currencyConversionService: CurrencyConversionService,
+  ) {}
 
-    @Get()
-    async convertCurrency(
-        @Query('from') from: string,
-        @Query('to') to: string,
-        @Query('amount') amount: number,
-    ) {
-        return this.currencyConversionService.convertCurrency(from, to, amount);
-    }
+  @Get()
+  async convertCurrency(
+    @Query('from') from: string,
+    @Query('to') to: string,
+    @Query('amount') amount: number,
+  ) {
+    return this.currencyConversionService.convertCurrency(from, to, amount);
+  }
 }

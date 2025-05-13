@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { User } from './users.entity';
 
 @Entity('trips')
@@ -18,7 +25,11 @@ export class Trip {
   @Column({ type: 'date' })
   endDate: Date;
 
-  @Column({ type: 'enum', enum: ['Upcoming', 'Ongoing', 'Completed', 'Canceled'], default: 'Upcoming' })
+  @Column({
+    type: 'enum',
+    enum: ['Upcoming', 'Ongoing', 'Completed', 'Canceled'],
+    default: 'Upcoming',
+  })
   status: string;
 
   @CreateDateColumn()

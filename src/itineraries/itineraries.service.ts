@@ -65,10 +65,9 @@ export class ItineraryService {
         { role: 'user', content: prompt },
       ],
       temperature: TEMPERATURE,
-      response_format: { type: "json_object" }
+      response_format: { type: 'json_object' },
     });
 
     return response.choices[0]?.message?.content || 'No itinerary generated.';
   }
-
 }

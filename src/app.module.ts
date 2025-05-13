@@ -8,7 +8,7 @@ import { UsersModule } from './users/users.module';
 import { ItineraryModule } from './itineraries/itineraries.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import typeorm from './config/typeorm';  
+import typeorm from './config/typeorm';
 import { CurrencyConversionModule } from './currency-conversion/currency-conversion.module';
 
 @Module({
@@ -22,14 +22,14 @@ import { CurrencyConversionModule } from './currency-conversion/currency-convers
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
-    DatabaseModule, 
+    DatabaseModule,
     CountryModule,
     VisaRequirementsModule,
     ItineraryModule,
     UsersModule,
     AuthModule,
-    CurrencyConversionModule
-  ], 
+    CurrencyConversionModule,
+  ],
   providers: [AppService],
 })
 export class AppModule {}
