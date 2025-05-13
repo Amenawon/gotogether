@@ -6,7 +6,7 @@ import { CountryModule } from './country/country.module';
 import { VisaRequirementsModule } from './visa-requirements/visa-requirements.module';
 import { UsersModule } from './users/users.module';
 import { ItineraryModule } from './itineraries/itineraries.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm'; 
 import { AuthModule } from './auth/auth.module';
 import typeorm from './config/typeorm';  
 import { CurrencyConversionModule } from './currency-conversion/currency-conversion.module';
