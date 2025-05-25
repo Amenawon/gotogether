@@ -20,5 +20,5 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["src", "vercel.ts"]
+  "include": ["api/**/*", "src/**/*"]
 }
