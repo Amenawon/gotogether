@@ -18,9 +18,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
-        // ssl: {
-        //   rejectUnauthorized: true,
-        // },
+        logging:true,
+        ssl: {
+          rejectUnauthorized: false,
+        },
         autoLoadEntities: true,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Auto-create tables (disable in production)
