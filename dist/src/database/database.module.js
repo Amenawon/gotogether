@@ -61,11 +61,16 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                 inject: [config_1.ConfigService],
                 useFactory: async (configService) => ({
                     type: 'postgres',
-                    url: configService.get('POSTGRES_URL'),
-                    logging: true,
+                    url: process.env.POSTGRES_URL,
+                    ssl: true,
+                    extra: {
+                        ssl: {
+                            rejectUnauthorized: false,
+                        },
+                    },
+                    synchronize: false,
                     autoLoadEntities: true,
                     entities: [__dirname + '/**/*.entity{.ts,.js}'],
-                    synchronize: true,
                     migrations: ['migrations/*{.ts,.js}'],
                 }),
             }),

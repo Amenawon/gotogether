@@ -13,7 +13,6 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
 const config_1 = require("@nestjs/config");
-const database_module_1 = require("./database/database.module");
 const country_module_1 = require("./country/country.module");
 const visa_requirements_module_1 = require("./visa-requirements/visa-requirements.module");
 const users_module_1 = require("./users/users.module");
@@ -36,7 +35,6 @@ exports.AppModule = AppModule = __decorate([
                 inject: [config_1.ConfigService],
                 useFactory: async (configService) => configService.get('typeorm'),
             }),
-            database_module_1.DatabaseModule,
             country_module_1.CountryModule,
             visa_requirements_module_1.VisaRequirementsModule,
             itineraries_module_1.ItineraryModule,
