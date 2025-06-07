@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import cors from 'cors';
+import serverless from 'serverless-http';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -11,12 +11,13 @@ async function bootstrap() {
     .setTitle('My API')
     .setDescription('API documentation for My API')
     .setVersion('1.0')
-    // .addBearerAuth() // If using JWT authentication
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.init();
+  return app.getHttpAdapter().getInstance(); // Return the Express instance
 }
-bootstrap();
+// Export the serverless handler
+export default serverless(bootstrap);
