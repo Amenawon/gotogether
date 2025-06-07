@@ -13,19 +13,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DATABASE_HOST'),
-        port: configService.get('DATABASE_PORT'),
-        username: configService.get('DATABASE_USERNAME'),
-        password: configService.get('DATABASE_PASSWORD'),
-        database: configService.get('DATABASE_NAME'),
+        // host: configService.get('DATABASE_HOST'),
+        // port: configService.get('DATABASE_PORT'),
+        // username: configService.get('DATABASE_USERNAME'),
+        // password: configService.get('DATABASE_PASSWORD'),
+        // database: configService.get('DATABASE_NAME'),
+        url: configService.get('DB_URL'),
         logging: true,
+        ssl: {
+          rejectUnauthorized: false,
+        },
         autoLoadEntities: true,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Auto-create tables (disable in production)
         migrations: ['migrations/*{.ts,.js}'],
-
-        ssl:
-          process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
       }),
     }),
   ],
