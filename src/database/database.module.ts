@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log('Using POSTGRES_URL:', process.env.POSTGRES_URL);
+console.log('Using DB_URL:', process.env.DB_URL);
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,7 +18,7 @@ console.log('Using POSTGRES_URL:', process.env.POSTGRES_URL);
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        url: process.env.POSTGRES_URL,
+        url: process.env.DB_URL,
         ssl: true,
         extra: {
           ssl: {
