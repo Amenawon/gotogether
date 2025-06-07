@@ -18,7 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         // username: configService.get('DATABASE_USERNAME'),
         // password: configService.get('DATABASE_PASSWORD'),
         // database: configService.get('DATABASE_NAME'),
-        url: configService.get('DATABASE_URL'),
+        url: configService.get('POSTGRES_URL'),
         logging: true,
         ssl: {
           rejectUnauthorized: false,
