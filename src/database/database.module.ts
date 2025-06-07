@@ -19,9 +19,7 @@ console.log('Using POSTGRES_URL:', process.env.POSTGRES_URL);
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
         url: process.env.POSTGRES_URL,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        ssl: true,
         extra: {
           ssl: {
             rejectUnauthorized: false,
