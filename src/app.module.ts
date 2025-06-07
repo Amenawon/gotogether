@@ -22,7 +22,6 @@ import { CurrencyConversionModule } from './currency-conversion/currency-convers
       useFactory: async (configService: ConfigService) =>
         configService.get('typeorm'),
     }),
-    DatabaseModule,
     CountryModule,
     VisaRequirementsModule,
     ItineraryModule,

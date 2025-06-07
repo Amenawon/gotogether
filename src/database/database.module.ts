@@ -25,7 +25,7 @@ console.log('Using POSTGRES_URL:', process.env.POSTGRES_URL);
             rejectUnauthorized: false,
           },
         },
-        synchronize: true,
+        synchronize: false,
         autoLoadEntities: true,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         migrations: ['migrations/*{.ts,.js}'],
