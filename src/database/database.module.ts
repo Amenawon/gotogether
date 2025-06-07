@@ -2,6 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+console.log('Using POSTGRES_URL:', process.env.POSTGRES_URL);
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,9 +25,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         // database: configService.get('DATABASE_NAME'),
         url: configService.get('POSTGRES_URL'),
         logging: true,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
         autoLoadEntities: true,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // Auto-create tables (disable in production)
