@@ -1,10 +1,4 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Itinerary } from '../entity/itineraries.entity';
-import { TemplateService } from '../template/template.service';
-import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
+import { Injectable } from '@nestjs/common'; 
 import { GenerateItineraryDto } from './generate-itinerary-dto';
 import { OpenAI } from 'openai';
 
@@ -15,8 +9,7 @@ const TEMPERATURE = 0.7;
 
 @Injectable()
 export class ItineraryService {
-  constructor(
-    @InjectRepository(Itinerary)
+  constructor(  
     private readonly openai: OpenAI,
   ) {}
 

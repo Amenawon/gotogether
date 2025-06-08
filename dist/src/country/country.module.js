@@ -9,19 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CountryModule = void 0;
 const common_1 = require("@nestjs/common");
 const country_controller_1 = require("./country.controller");
-const typeorm_1 = require("@nestjs/typeorm");
 const country_service_1 = require("./country.service");
 const axios_1 = require("@nestjs/axios");
-const country_entity_1 = require("../entity/country.entity");
 let CountryModule = class CountryModule {
 };
 exports.CountryModule = CountryModule;
 exports.CountryModule = CountryModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([country_entity_1.Country]), axios_1.HttpModule],
+        imports: [axios_1.HttpModule],
         controllers: [country_controller_1.CountryController],
         providers: [country_service_1.CountryService],
-        exports: [typeorm_1.TypeOrmModule.forFeature([country_entity_1.Country])],
+        exports: [country_service_1.CountryService],
     })
 ], CountryModule);
 //# sourceMappingURL=country.module.js.map

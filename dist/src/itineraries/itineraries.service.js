@@ -8,14 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ItineraryService = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const itineraries_entity_1 = require("../entity/itineraries.entity");
 const openai_1 = require("openai");
 const INSTRUCTIONS = 'You are an expert travel planner, helping people build their travel itineraries with activities suggestions, where they can go, and  best places tailored to them';
 const MODEL = 'gpt-4-turbo';
@@ -75,7 +70,6 @@ let ItineraryService = class ItineraryService {
 exports.ItineraryService = ItineraryService;
 exports.ItineraryService = ItineraryService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(itineraries_entity_1.Itinerary)),
     __metadata("design:paramtypes", [openai_1.OpenAI])
 ], ItineraryService);
 //# sourceMappingURL=itineraries.service.js.map

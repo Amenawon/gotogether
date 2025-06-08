@@ -1,7 +1,6 @@
-import { Repository } from 'typeorm';
-import { Template } from '../entity/template.entity';
+import { PrismaService } from 'src/prisma.service';
 export declare class TemplateService {
-    private readonly templateRepo;
-    constructor(templateRepo: Repository<Template>);
+    private prisma;
+    constructor(prisma: PrismaService);
     findByName(name: string): Promise<string>;
 }

@@ -1,8 +1,7 @@
-import { Repository } from 'typeorm';
-import { Country } from '../entity/country.entity';
 import { CountryResponse } from 'src/models/countrydto';
+import { PrismaService } from 'src/prisma.service';
 export declare class CountryService {
-    private readonly countryRepository;
-    constructor(countryRepository: Repository<Country>);
+    private prisma;
+    constructor(prisma: PrismaService);
     getCountries(): Promise<CountryResponse[]>;
 }

@@ -13,8 +13,6 @@ exports.ItineraryModule = void 0;
 const common_1 = require("@nestjs/common");
 const itineraries_controller_1 = require("./itineraries.controller");
 const itineraries_service_1 = require("./itineraries.service");
-const typeorm_1 = require("@nestjs/typeorm");
-const itineraries_entity_1 = require("../entity/itineraries.entity");
 const template_module_1 = require("../template/template.module");
 const axios_1 = require("@nestjs/axios");
 const config_1 = require("@nestjs/config");
@@ -24,7 +22,7 @@ let ItineraryModule = class ItineraryModule {
 exports.ItineraryModule = ItineraryModule;
 exports.ItineraryModule = ItineraryModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([itineraries_entity_1.Itinerary]), axios_1.HttpModule, template_module_1.TemplateModule],
+        imports: [axios_1.HttpModule, template_module_1.TemplateModule],
         controllers: [itineraries_controller_1.ItinerariesController],
         providers: [
             itineraries_service_1.ItineraryService,
