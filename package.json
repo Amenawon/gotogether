@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "vercel-build": "tsc",
-    "build": "nest build && npm run migration:run",
+    "build": "prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "NODE_OPTIONS=--no-deprecation nest start --watch",
@@ -18,13 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "ts-node ./node_modules/typeorm/cli",
-    "migration:run": "node --require tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d dist/src/config/typeorm.js",
-    "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.ts migration:generate ./src/migrations/$npm_config_name",
-    "migration:create": "npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
-    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.ts migration:revert"
-  },
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+    },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
