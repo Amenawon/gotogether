@@ -9,6 +9,7 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
+    "rootDir": ".", // Set to project root
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
@@ -18,7 +19,14 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
-  "include": ["api/**/*", "src/**/*"]
+  "include": [
+    "src/**/*",
+    "api/**/*"
+  ], // Include both src and api
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

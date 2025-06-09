@@ -1,13 +1,10 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common'; 
 import { TemplateService } from './template.service';
-import { TemplateController } from './template.controller';
-import { Template } from '../entity/template.entity';
-import { HttpModule, HttpService } from '@nestjs/axios';
-import { ConfigService } from '@nestjs/config';
+import { TemplateController } from './template.controller'; 
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Template]), HttpModule],
+  imports: [HttpModule],
   controllers: [TemplateController],
   providers: [TemplateService],
   exports: [TemplateService],
