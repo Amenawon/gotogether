@@ -10,7 +10,7 @@ datasource db {
 model Country {
   id    Int     @id @default(autoincrement())
   name  String? @db.VarChar(100)
-  code  String? @db.Char(2)
+  code  String? @unique @db.Char(2)
 }
 model Itinerary {
   id          Int      @id @default(autoincrement())
